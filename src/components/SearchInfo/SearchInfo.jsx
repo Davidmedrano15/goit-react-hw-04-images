@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
-import ImageGallery from "../ImageGallery";
-import ImageGalleryItem from "../ImageGalleryItem";
-import Button from "../UI/Button";
-import Container from "../UI/Container";
-import Modal from "../Modal";
-import Loader from "../UI/Loader";
-import { FaGrinBeamSweat, FaHandMiddleFinger } from "react-icons/fa";
-import { TailSpin } from "react-loader-spinner";
-import ScrollToTop from "react-scroll-to-top";
-import PropTypes from "prop-types";
-import s from "./SearchInfo.module.css";
+import { useState } from 'react';
+import ImageGallery from '../ImageGallery';
+import ImageGalleryItem from '../ImageGalleryItem';
+import Button from '../UI/Button';
+import Container from '../UI/Container';
+import Modal from '../Modal';
+import Loader from '../UI/Loader';
+import { FaGrinBeamSweat, FaHandMiddleFinger } from 'react-icons/fa';
+import { TailSpin } from 'react-loader-spinner';
+import ScrollToTop from 'react-scroll-to-top';
+import PropTypes from 'prop-types';
+import s from './SearchInfo.module.css';
 
 export default function SearchInfo({
   imageName,
@@ -19,10 +19,10 @@ export default function SearchInfo({
   error,
 }) {
   const [showModal, setShowModal] = useState(false);
-  const [largeImage, setLargeImage] = useState("");
-  const [type, setType] = useState("");
-  const [tags, setTags] = useState("");
-  const loading = status === "pending";
+  const [largeImage, setLargeImage] = useState('');
+  const [type, setType] = useState('');
+  const [tags, setTags] = useState('');
+  const loading = status === 'pending';
 
   const handleLoadMore = () => {
     onLoadMore();
@@ -39,7 +39,7 @@ export default function SearchInfo({
     setShowModal(!showModal);
   };
 
-  if (status === "idle") {
+  if (status === 'idle') {
     return (
       <p className={s.textStatusIdle}>
         <FaGrinBeamSweat size="30px" />
@@ -48,11 +48,11 @@ export default function SearchInfo({
     );
   }
 
-  if (status === "pending" && images.length === 0) {
+  if (status === 'pending' && images.length === 0) {
     return <TailSpin height="50" width="50" color="grey" ariaLabel="loading" />;
   }
 
-  if (status === "rejected" || images.length === 0) {
+  if (status === 'rejected' || images.length === 0) {
     return (
       <h1 className={s.textStatusReject}>
         <FaHandMiddleFinger /> Oops... we don't have "{imageName}" in database
@@ -72,7 +72,7 @@ export default function SearchInfo({
       )}
 
       <ImageGallery>
-        {images.map((image) => (
+        {images.map(image => (
           <ImageGalleryItem
             onImageClick={handleGalleryItem}
             key={image.id}
